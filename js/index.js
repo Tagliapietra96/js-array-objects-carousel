@@ -209,3 +209,5 @@ imgsList.forEach((element, i) => {
 
 el('#next-btn').addEventListener('click', nextObj);
 el('#prev-btn').addEventListener('click', prevObj);
+
+setInterval(nextObj, 3000);
