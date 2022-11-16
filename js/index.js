@@ -92,6 +92,40 @@ function removeActive(querySelector) {
     domElement.classList.remove('active');
 };
 
+/**
+ * funzione che fa slittare il focus su l'oggeto del carosello successivo
+ */
+function nextObj(){
+    removeActive(`div.banner-container > .banner:nth-child(${currentIndex + 1})`);
+    removeActive(`#my-cards-container > div:nth-child(${currentIndex + 1})`);
+
+    currentIndex++;
+
+    if (currentIndex > lastIndex) {
+        currentIndex = 0;
+    };
+
+    addActive(`div.banner-container > .banner:nth-child(${currentIndex + 1})`);
+    addActive(`#my-cards-container > div:nth-child(${currentIndex + 1})`);
+}
+
+/**
+ * funzione che fa slittare il focus su l'oggeto del carosello precedente
+ */
+function prevObj() {
+    removeActive(`div.banner-container > .banner:nth-child(${currentIndex + 1})`);
+    removeActive(`#my-cards-container > div:nth-child(${currentIndex + 1})`);
+
+    currentIndex--;
+
+    if (currentIndex < 0) {
+        currentIndex = lastIndex;
+    };
+
+    addActive(`div.banner-container > .banner:nth-child(${currentIndex + 1})`);
+    addActive(`#my-cards-container > div:nth-child(${currentIndex + 1})`);
+}
+
 //*******************************************************************
 //***************************VARIABILI*******************************
 //*******************************************************************
@@ -173,30 +207,5 @@ imgsList.forEach((element, i) => {
     });
 });
 
-el('#next-btn').addEventListener('click', () => {
-    removeActive(`div.banner-container > .banner:nth-child(${currentIndex + 1})`);
-    removeActive(`#my-cards-container > div:nth-child(${currentIndex + 1})`);
-
-    currentIndex++;
-
-    if (currentIndex > lastIndex) {
-        currentIndex = 0;
-    };
-
-    addActive(`div.banner-container > .banner:nth-child(${currentIndex + 1})`);
-    addActive(`#my-cards-container > div:nth-child(${currentIndex + 1})`);
-});
-
-el('#prev-btn').addEventListener('click', () => {
-    removeActive(`div.banner-container > .banner:nth-child(${currentIndex + 1})`);
-    removeActive(`#my-cards-container > div:nth-child(${currentIndex + 1})`);
-
-    currentIndex--;
-
-    if (currentIndex < 0) {
-        currentIndex = lastIndex;
-    };
-
-    addActive(`div.banner-container > .banner:nth-child(${currentIndex + 1})`);
-    addActive(`#my-cards-container > div:nth-child(${currentIndex + 1})`);
-});
+el('#next-btn').addEventListener('click', nextObj);
+el('#prev-btn').addEventListener('click', prevObj);
