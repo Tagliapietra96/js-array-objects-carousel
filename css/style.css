@@ -1,0 +1,92 @@
+:root{
+    --imgs-number: 0;
+}
+
+img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-position: center;
+    object-fit: cover;
+}
+
+button{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+}
+
+.banner-container{
+    height: 100%;
+    width: 100%;
+}
+
+.my-img{
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    transition: opacity .7s;
+}
+
+.my-img.active{
+    opacity: 1;
+}
+
+#my-cards-container{
+    height: 100%;
+    width: 100%;
+}
+
+#scroll-container{
+    position: absolute;
+    right: 0;
+    left: 75%;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity .5s;
+}
+
+#scroll-container .my-card{
+    position: relative;
+    height: calc(100% / var(--imgs-number));
+    width: 100%;
+    border: 0px solid white;
+    transition: border .7s;
+}
+
+#scroll-container .my-card.active{
+    border: 4px solid white;
+}
+
+section.container:hover #scroll-container{
+    opacity: 1;
+}
+
+#prev-btn{
+    top: 3%;
+}
+
+#next-btn{
+    bottom: 3%;
+}
+
+.overlay{
+    background-color: black;
+    opacity: .5;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 3;
+    border: 0;
+    transition: all .7s;
+}
+
+.my-card.active .overlay{
+    opacity: .1;
+    background-color: white;
+}
