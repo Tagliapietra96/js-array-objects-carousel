@@ -210,8 +210,8 @@ imgsList.forEach((element, i) => {
 el('#next-btn').addEventListener('click', nextObj);
 el('#prev-btn').addEventListener('click', prevObj);
 
-let nextInterval = setInterval(nextObj, 3000);
-let prevInterval = setInterval(prevObj, 3000);
+let nextInterval;
+let prevInterval;
 
 el('#start-btn').addEventListener('click', () => {
     clearInterval(nextInterval);
